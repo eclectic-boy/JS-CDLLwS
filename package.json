@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/eclectic-boy/JS-CDLLwS/issues"
   },
-  "homepage": "https://github.com/eclectic-boy/JS-CDLLwS#readme"
+  "homepage": "https://github.com/eclectic-boy/JS-CDLLwS#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0"
+  }
 }
