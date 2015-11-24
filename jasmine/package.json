@@ -1,0 +1,21 @@
+{
+  "name": "js-cdllws",
+  "version": "1.0.0",
+  "description": "Javascript (ES2015) implementation of a Circular Doubly Linked List with Sentinel",
+  "main": "static/js/src/JS-CDLLwS.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eclectic-boy/JS-CDLLwS.git"
+  },
+  "author": "eclectic-boy (me@eclecticboy.xyz)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eclectic-boy/JS-CDLLwS/issues"
+  },
+  "homepage": "https://github.com/eclectic-boy/JS-CDLLwS#readme",
+  "devDependencies": {
+  }
+}
