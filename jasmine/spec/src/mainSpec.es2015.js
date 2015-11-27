@@ -1,5 +1,16 @@
-xdescribe("enumerate", function() {
-  it("properly enumerates", function() {});
+describe("enumerate", function() {
+  it("properly enumerates", function() {
+    let l = [];
+    for(let i=0; i<100; i++) {
+      l.push(Math.random());
+    }
+    let j = 0;
+    for(let [i, x] of enumerate(l)) {
+      expect(i).toEqual(j);
+      expect(x).toEqual(l[i]);
+      j++;
+    }
+  });
 });
 
 describe("CDLLwS.Node class", function() {
@@ -40,20 +51,58 @@ describe("CDLLwS class", function() {
 });
 
 describe("CDLLwS instance", function() {
-
   it("is an iterable", function() {
+    let x = new CDLLwS();
+
+    expect(x[Symbol.iterator]).not.toBe(undefined);
     expect(() => {
       let x = new CDLLwS();
       for(let i of x) {}
     }).not.toThrow();
   });
 
+  it("appends values and stores length", function() {
+    let x = new CDLLwS();
+    expect(x.length).toEqual(0);
+
+    let tot = 100;
+    for(let i=0; i<tot; i++) {
+      let value = Math.random();
+      x.append(value);
+      expect(x.get(-1)).toEqual(value);
+      expect(x.length).toEqual(i + 1);
+    }
+
+    expect(x.length).toEqual(tot);
+  });
+
+  it("inserts values and stores length", function() {
+    let x = new CDLLwS();
+    expect(x.length).toEqual(0);
+
+    let tot = 100;
+    
+    for(let i=0; i<tot; i++) {
+      let index = Math.floor(Math.random() * x.length);
+      let value = Math.random();
+      x.insert(index, value);
+      expect(value).toEqual(x.get(index));
+      expect(x.length).toEqual(i + 1);
+    }
+
+    //to insert in position -1 means to insert before the last item i.e. in position [-2]==[x.length-2]
+    let value = Math.random();
+    x.insert(-1, value);
+    expect(value).toEqual(x.get(x.length - 2));
+    
+    expect(x.length).toEqual(tot + 1);
+  });
+
   it("is an iterable and can return Node instances", function() {
     let x = new CDLLwS();
     let tot = 100;
     for(let i=0; i<tot; i++) {
-      var val = Math.random();
-      x.append(val);
+      x.append(Math.random());
     }
     for(let y of x[Symbol.iterator](true)) {
       expect(y instanceof CDLLwS.Node).toBe(true);
@@ -64,8 +113,7 @@ describe("CDLLwS instance", function() {
     let x = new CDLLwS();
     let tot = 100;
     for(let i=0; i<tot; i++) {
-      var val = Math.random();
-      x.append(val);
+      x.append(Math.random());
     }
 
     for(let y of x[Symbol.iterator](false)) {
@@ -77,35 +125,9 @@ describe("CDLLwS instance", function() {
     }
   });
 
-  it("stores its length", function() {
-    let x = new CDLLwS();
-    expect(x.length).toEqual(0);
-
-    let tot = 100;
-    for(let i=0; i<tot; i++) {
-      var val = Math.random();
-      x.append(val);
-    }
-    expect(x.length).toEqual(tot);    
-  });
-
-  it("appends values -> correct length", function() {
-    let x = new CDLLwS();
-    let tot = 100;
-
-    expect(() => {
-      for(let i=0; i<tot; i++) {
-        var val = Math.random();
-        x.append(val);
-      }
-    }).not.toThrow();
-
-    expect(x.length).toEqual(tot);
-  });
-
   it("gets values", function() {
     let x = new CDLLwS();
-    var l = [1, "a", null, undefined, "z", 0.5454, {}];
+    var l = [1, "a", null, undefined, "z", 0.5454, {}, function() {}];
     for(let v of l) {
       x.append(v);
     }
@@ -131,21 +153,5 @@ describe("CDLLwS instance", function() {
     expect(() => { x.get(-2) }).toThrow();
     expect(() => { x.get(x.length) }).toThrow();
     expect(() => { x.get(x.length + 1) }).toThrow();
-  });
-
-  it("inserts values", function() {
-    let x = new CDLLwS();
-
-    for(let i=0; i<100; i++) {
-      let index = Math.floor(Math.random() * x.length);
-      let value = Math.random();
-      x.insert(index, value);
-      expect(value).toEqual(x.get(index));
-    }
-
-    //to insert in position -1 means to insert before the last item i.e. in position [-2]==[x.length-2]
-    let value = Math.random();
-    x.insert(-1, value);
-    expect(value).toEqual(x.get(x.length - 2));
   });
 });
