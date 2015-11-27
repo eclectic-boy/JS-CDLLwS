@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/eclectic-boy/JS-CDLLwS#readme",
   "devDependencies": {
+    "babel-polyfill": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.0",
