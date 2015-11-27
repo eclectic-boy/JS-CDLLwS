@@ -372,5 +372,27 @@ describe("CDLLwS instance", function () {
       x.get(x.length + 1);
     }).toThrow();
   });
+
+  it("correctly outputs a string as a normal list", function () {
+    var x = new CDLLwS();
+    var l = [];
+    for (var i = 0; i < 100; i++) {
+      var value = Math.random();
+      x.append(value);
+      l.push(value);
+    }
+    expect(x.toString()).toEqual(l.toString());
+  });
+
+  it("has its valueOf method which outputs a normal list", function () {
+    var x = new CDLLwS();
+    var l = [];
+    for (var i = 0; i < 100; i++) {
+      var value = Math.random();
+      x.append(value);
+      l.push(value);
+    }
+    expect(x.valueOf()).toEqual(l);
+  });
 });
 //# sourceMappingURL=mainSpec.js.map

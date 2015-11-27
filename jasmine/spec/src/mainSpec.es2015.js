@@ -154,4 +154,26 @@ describe("CDLLwS instance", function() {
     expect(() => { x.get(x.length) }).toThrow();
     expect(() => { x.get(x.length + 1) }).toThrow();
   });
+
+  it("correctly outputs a string as a normal list", function() {
+    let x = new CDLLwS();
+    let l = [];
+    for(let i=0; i<100; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      l.push(value);
+    }
+    expect(x.toString()).toEqual(l.toString());
+  });
+
+  it("has its valueOf method which outputs a normal list", function() {
+    let x = new CDLLwS();
+    let l = [];
+    for(let i=0; i<100; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      l.push(value);
+    }
+    expect(x.valueOf()).toEqual(l);
+  });
 });
