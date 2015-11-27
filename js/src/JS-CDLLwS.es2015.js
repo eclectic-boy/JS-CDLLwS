@@ -73,6 +73,18 @@ class CDLLwS {
 			this.sentinel
 		);
 	}
+
+	valueOf() {
+		let l = [];
+		for(let x of this) {
+			l.push(x);
+		}
+		return l;
+	}
+
+	toString() {
+		return String(this.valueOf());
+	}
 }
 
 
@@ -83,7 +95,11 @@ CDLLwS.Node = class {
 		this.next = null;
 	}
 
+	valueOf() {
+		return this.data;
+	}
+
 	toString() {
-		return String(this.data);
+		return String(this.valueOf());
 	}
 }

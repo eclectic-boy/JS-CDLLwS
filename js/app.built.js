@@ -192,6 +192,42 @@ var CDLLwS = (function () {
 		value: function append(data) {
 			this._insert_data(data, this.sentinel);
 		}
+	}, {
+		key: "valueOf",
+		value: function valueOf() {
+			var l = [];
+			var _iteratorNormalCompletion3 = true;
+			var _didIteratorError3 = false;
+			var _iteratorError3 = undefined;
+
+			try {
+				for (var _iterator3 = this[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+					var x = _step3.value;
+
+					l.push(x);
+				}
+			} catch (err) {
+				_didIteratorError3 = true;
+				_iteratorError3 = err;
+			} finally {
+				try {
+					if (!_iteratorNormalCompletion3 && _iterator3.return) {
+						_iterator3.return();
+					}
+				} finally {
+					if (_didIteratorError3) {
+						throw _iteratorError3;
+					}
+				}
+			}
+
+			return l;
+		}
+	}, {
+		key: "toString",
+		value: function toString() {
+			return String(this.valueOf());
+		}
 	}]);
 
 	return CDLLwS;
@@ -207,9 +243,14 @@ CDLLwS.Node = (function () {
 	}
 
 	_createClass(_class, [{
+		key: "valueOf",
+		value: function valueOf() {
+			return this.data;
+		}
+	}, {
 		key: "toString",
 		value: function toString() {
-			return String(this.data);
+			return String(this.valueOf());
 		}
 	}]);
 
