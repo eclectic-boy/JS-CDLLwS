@@ -223,4 +223,20 @@ describe("CDLLwS instance", function() {
       expect(x.valueOf()).toEqual(l);
     }
   });
+
+  it("finds the index of a specific value", function() {
+    let x = new CDLLwS();
+    let l = [];
+    var tot = 100;
+
+    for(let i=0; i<tot; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      l.push(value);
+    }
+    for(let v of x) {
+     expect(x.index(v)).toEqual(l.indexOf(v));
+    }
+    expect(() => { x.index("a"); }).toThrow();
+  });
 });

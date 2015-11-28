@@ -205,18 +205,23 @@ var CDLLwS = (function () {
       return x.data;
     }
   }, {
-    key: "valueOf",
-    value: function valueOf() {
-      var l = [];
+    key: "index",
+    value: function index(data) {
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator3 = this[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var x = _step3.value;
+        for (var _iterator3 = enumerate(this)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var _step3$value = _slicedToArray(_step3.value, 2);
 
-          l.push(x);
+          var i = _step3$value[0];
+          var x = _step3$value[1];
+
+          if (x === data) {
+            return i;
+            break;
+          }
         }
       } catch (err) {
         _didIteratorError3 = true;
@@ -229,6 +234,37 @@ var CDLLwS = (function () {
         } finally {
           if (_didIteratorError3) {
             throw _iteratorError3;
+          }
+        }
+      }
+
+      throw new Error("'" + data + "' is not in list");
+    }
+  }, {
+    key: "valueOf",
+    value: function valueOf() {
+      var l = [];
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = this[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var x = _step4.value;
+
+          l.push(x);
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
           }
         }
       }

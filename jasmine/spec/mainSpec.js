@@ -441,5 +441,45 @@ describe("CDLLwS instance", function () {
       expect(x.valueOf()).toEqual(l);
     }
   });
+
+  it("finds the index of a specific value", function () {
+    var x = new CDLLwS();
+    var l = [];
+    var tot = 100;
+
+    for (var i = 0; i < tot; i++) {
+      var value = Math.random();
+      x.append(value);
+      l.push(value);
+    }
+    var _iteratorNormalCompletion10 = true;
+    var _didIteratorError10 = false;
+    var _iteratorError10 = undefined;
+
+    try {
+      for (var _iterator10 = x[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+        var v = _step10.value;
+
+        expect(x.index(v)).toEqual(l.indexOf(v));
+      }
+    } catch (err) {
+      _didIteratorError10 = true;
+      _iteratorError10 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion10 && _iterator10.return) {
+          _iterator10.return();
+        }
+      } finally {
+        if (_didIteratorError10) {
+          throw _iteratorError10;
+        }
+      }
+    }
+
+    expect(function () {
+      x.index("a");
+    }).toThrow();
+  });
 });
 //# sourceMappingURL=mainSpec.js.map

@@ -85,6 +85,16 @@ class CDLLwS {
     return x.data;
   }
 
+  index(data) {
+  	for(let [i, x] of enumerate(this)) {
+  		if(x === data) {
+  			return i;
+  			break;
+  		}
+  	}
+  	throw new Error(`'${data}' is not in list`);
+  }
+
   valueOf() {
     let l = [];
     for(let x of this) {
