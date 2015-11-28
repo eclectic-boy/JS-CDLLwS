@@ -241,6 +241,21 @@ var CDLLwS = (function () {
       throw new Error("'" + data + "' is not in list");
     }
   }, {
+    key: "reverse",
+    value: function reverse() {
+      var x = this.sentinel.next;
+      while (x != this.sentinel) {
+        var _ref = [x.prev, x.next];
+        x.next = _ref[0];
+        x.prev = _ref[1];
+
+        x = x.prev;
+      }
+      var _ref2 = [this.sentinel.prev, this.sentinel.next];
+      this.sentinel.next = _ref2[0];
+      this.sentinel.prev = _ref2[1];
+    }
+  }, {
     key: "valueOf",
     value: function valueOf() {
       var l = [];

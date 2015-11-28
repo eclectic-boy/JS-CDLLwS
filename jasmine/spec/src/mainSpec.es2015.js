@@ -239,4 +239,22 @@ describe("CDLLwS instance", function() {
     }
     expect(() => { x.index("a"); }).toThrow();
   });
+
+  it("reverses itself in-place", function() {
+    let x = new CDLLwS();
+    let y = new CDLLwS();
+    var tot = 100;
+
+    for(let i=0; i<tot; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      y.append(value);
+    }
+
+    x.reverse();
+
+    for(let [i, v] of enumerate(x)) {
+     expect(v).toEqual(y.get(tot-1-i));
+    }
+  });
 });

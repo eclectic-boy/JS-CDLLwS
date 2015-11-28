@@ -481,5 +481,47 @@ describe("CDLLwS instance", function () {
       x.index("a");
     }).toThrow();
   });
+
+  it("reverses itself in-place", function () {
+    var x = new CDLLwS();
+    var y = new CDLLwS();
+    var tot = 100;
+
+    for (var i = 0; i < tot; i++) {
+      var value = Math.random();
+      x.append(value);
+      y.append(value);
+    }
+
+    x.reverse();
+
+    var _iteratorNormalCompletion11 = true;
+    var _didIteratorError11 = false;
+    var _iteratorError11 = undefined;
+
+    try {
+      for (var _iterator11 = enumerate(x)[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+        var _step11$value = _slicedToArray(_step11.value, 2);
+
+        var i = _step11$value[0];
+        var v = _step11$value[1];
+
+        expect(v).toEqual(y.get(tot - 1 - i));
+      }
+    } catch (err) {
+      _didIteratorError11 = true;
+      _iteratorError11 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion11 && _iterator11.return) {
+          _iterator11.return();
+        }
+      } finally {
+        if (_didIteratorError11) {
+          throw _iteratorError11;
+        }
+      }
+    }
+  });
 });
 //# sourceMappingURL=mainSpec.js.map

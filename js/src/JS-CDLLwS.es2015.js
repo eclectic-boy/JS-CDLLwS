@@ -86,13 +86,22 @@ class CDLLwS {
   }
 
   index(data) {
-  	for(let [i, x] of enumerate(this)) {
-  		if(x === data) {
-  			return i;
-  			break;
-  		}
+    for(let [i, x] of enumerate(this)) {
+      if(x === data) {
+        return i;
+        break;
+      }
+    }
+    throw new Error(`'${data}' is not in list`);
+  }
+
+  reverse() {
+  	let x = this.sentinel.next;
+  	while(x != this.sentinel) {
+  	  [x.next, x.prev] = [x.prev, x.next];
+  	  x = x.prev;
   	}
-  	throw new Error(`'${data}' is not in list`);
+  	[this.sentinel.next, this.sentinel.prev] = [this.sentinel.prev, this.sentinel.next];
   }
 
   valueOf() {
