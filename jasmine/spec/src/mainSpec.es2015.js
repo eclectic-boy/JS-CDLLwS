@@ -176,4 +176,51 @@ describe("CDLLwS instance", function() {
     }
     expect(x.valueOf()).toEqual(l);
   });
+
+  it("pop values", function() {
+    let x = new CDLLwS();
+    let l = [];
+    var tot = 100;
+
+    for(let i=0; i<tot; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      l.push(value);
+    }
+    
+    expect(x.valueOf()).toEqual(l);
+
+    let len = x.length;
+    for(let i=0; i<len; i++) {
+      expect(x.pop()).toEqual(l.pop());
+      expect(x.valueOf()).toEqual(l);
+    }
+  });
+
+  it("pop values by index", function() {
+    let x = new CDLLwS();
+    let l = [];
+    var tot = 100;
+
+    for(let i=0; i<tot; i++) {
+      let value = Math.random(); 
+      x.append(value);
+      l.push(value);
+    }
+    
+    expect(x.valueOf()).toEqual(l);
+
+    let popped = x.pop(-1);
+    let spliced = l.splice(tot-1, 1)[0];
+    expect(popped).toEqual(spliced);
+    expect(x.valueOf()).toEqual(l);
+
+    for(let i=0; i<tot-1; i++) {
+      let index = Math.floor(Math.random() * x.length);
+      let popped = x.pop(index);
+      let spliced = l.splice(index, 1)[0];
+      expect(popped).toEqual(spliced);
+      expect(x.valueOf()).toEqual(l);
+    }
+  });
 });
