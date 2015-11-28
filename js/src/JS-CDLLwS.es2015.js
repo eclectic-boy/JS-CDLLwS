@@ -97,12 +97,12 @@ class CDLLwS {
   }
 
   reverse() {
-  	let x = this.sentinel.next;
-  	while(x != this.sentinel) {
-  	  [x.next, x.prev] = [x.prev, x.next];
-  	  x = x.prev;
-  	}
-  	[this.sentinel.next, this.sentinel.prev] = [this.sentinel.prev, this.sentinel.next];
+    let x = this.sentinel.next;
+    while(x != this.sentinel) {
+      [x.next, x.prev] = [x.prev, x.next];
+      x = x.prev;
+    }
+    [this.sentinel.next, this.sentinel.prev] = [this.sentinel.prev, this.sentinel.next];
   }
 
   valueOf() {
