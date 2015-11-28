@@ -23,6 +23,7 @@ class CDLLwS {
   }
 
   get(i, getNode) {
+    getNode = getNode || false;
     let out;
 
     if(i < -1 || this.length <= i) {

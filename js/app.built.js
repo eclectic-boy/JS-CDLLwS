@@ -124,6 +124,7 @@ var CDLLwS = (function () {
   }, {
     key: "get",
     value: function get(i, getNode) {
+      getNode = getNode || false;
       var out = undefined;
 
       if (i < -1 || this.length <= i) {
